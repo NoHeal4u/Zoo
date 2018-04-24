@@ -6,6 +6,8 @@
       <th>Species</th>
       <th>Name</th>
       <th>Year of birth</th>
+      
+
     </tr>
 
     <tr v-for= "(animal , key) in animals" :key = "key">
@@ -13,6 +15,7 @@
       <td>{{ animal.name }}</td>
       <td v-if = "animal.dateOfBirth != null">{{ animal.dateOfBirth }}</td>
       <td v-else >Unknown</td>
+      <td><button @click = "removeAnimal(animal)">Remove</button></td>
     </tr>
       
     </table>
@@ -37,6 +40,13 @@ export default {
       { specie: 'Dzudzabajac' , name: 'Malaksijandar' , dateOfBirth: null  }
 
       ]
+    }
+  },
+
+  methods: {
+
+    removeAnimal(animal){
+    this.animals.splice(this.animals.indexOf(animal),1)
     }
   }
 }

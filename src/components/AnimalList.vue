@@ -6,7 +6,7 @@
       <th>Species</th>
       <th>Name</th>
       <th>Year of birth</th>
-      
+
 
     </tr>
 
@@ -16,6 +16,7 @@
       <td v-if = "animal.dateOfBirth != null">{{ animal.dateOfBirth }}</td>
       <td v-else >Unknown</td>
       <td><button @click = "removeAnimal(animal)">Remove</button></td>
+      <td><button @click = "moveToTop(animal)">Move to top</button></td>
     </tr>
       
     </table>
@@ -46,7 +47,17 @@ export default {
   methods: {
 
     removeAnimal(animal){
+
     this.animals.splice(this.animals.indexOf(animal),1)
+    },
+
+    moveToTop(animal){
+
+      // var temp = animal;
+      
+      this.animals.splice(this.animals.indexOf(animal),1);
+      this.animals.unshift(animal);
+
     }
   }
 }
